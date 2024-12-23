@@ -1,18 +1,11 @@
 Rails.application.routes.draw do
-  # get "/products", to: "products#index"
+  # Session management (login/logout)
+  resource :session
 
-  # get "/products/new", to: "products#new"
-  # post "/products", to: "products#create"
+  # Password management  (reset functionality with token parameter)
+  resources :passwords, param: :token
 
-  # get "/products/:id", to: "products#show"
-
-  # get "/products/:id/edit", to: "products#edit"
-  # patch "/products/:id", to: "products#update"
-  # put "/products/:id", to: "products#update"
-
-  # delete "/products/:id", to: "products#destroy"
-
-  # above routes can be replaced with resources
+  # Product management (all RESTful actions)
   resources :products
 
 
