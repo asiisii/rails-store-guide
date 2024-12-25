@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
-  # Session management (login/logout)
+  # Manages user sessions (login/logout)
   resource :session
 
-  # Password management  (reset functionality with token parameter)
+  # Handles password reset requests with token-based identification
   resources :passwords, param: :token
 
-  # Product management (all RESTful actions)
-  resources :products
+  # Provides full CRUD functionality for products
+  # Nested subscriber routes handle subscriptions (create action only)
+  resources :products do
+    resources :subscribers, only: [ :create ]
+  end
 
-
-  # Defines the root path route ("/")
+  # Sets the root path to the products index page
   root "products#index"
 end
