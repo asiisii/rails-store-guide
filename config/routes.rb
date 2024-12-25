@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # Nested subscriber routes handle subscriptions (create action only)
   resources :products do
     resources :subscribers, only: [ :create ]
+    resource :unsubscribe, only: [ :show ]
   end
 
   # Sets the root path to the products index page
